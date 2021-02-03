@@ -36,10 +36,11 @@ const Setting = (props) => {
 
   return (
     <div className={classes.settingLayout}>
+      <div className={classes.settingTitle}>pick up the words you want to train</div>
       <div className={classes.contentWrapper}>
         {wordList.map((item, index)=> {
           return <div key={index} className={classes.itemWrapper}>
-            <Checkbox onChange={handleChange} value={item}></Checkbox>{item}
+            <Checkbox size='small' onChange={handleChange} value={item}></Checkbox>{item}
           </div>
         })}
       </div>     

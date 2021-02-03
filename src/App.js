@@ -23,9 +23,10 @@ function App() {
   return (
     <div className={classes.mainLayout}>
       {/* <Main></Main> */}
-      <Tabs tabUpdate={tabUpdate}></Tabs>
+      {/* <Tabs tabUpdate={tabUpdate}></Tabs>
       {tabIndex === 0 &&  <Trainer></Trainer>}
-      {tabIndex ===1 && <Lyric></Lyric>}
+      {tabIndex ===1 && <Lyric></Lyric>} */}
+      <Trainer></Trainer>
      
     </div>
    
