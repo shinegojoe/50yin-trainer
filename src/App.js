@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import Main from 'Components/main'
+import Tabs from "Components/tabs"
+import classes from "Sass/mainLayout.module.sass"
+import Trainer from 'Components/trainer'
+import Lyric from 'Components/lyric'
+
+import React, { useState } from "react";
 
 function App() {
+  const [ tabIndex, setTabIndex ] = useState(0)
+  
+
+  const tabUpdate = (val) => {
+    setTabIndex(val)
+  }
+
+  const handleSetting = () => {
+
+  }
+
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={classes.mainLayout}>
+      {/* <Main></Main> */}
+      <Tabs tabUpdate={tabUpdate}></Tabs>
+      {tabIndex === 0 &&  <Trainer></Trainer>}
+      {tabIndex ===1 && <Lyric></Lyric>}
+     
     </div>
-  );
+   
+  )
 }
 
 export default App;
