@@ -9,6 +9,7 @@ import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 import PlayCircleFilledWhiteIcon from '@material-ui/icons/PlayCircleFilledWhite';
+import Switch from '@material-ui/core/Switch';
 
 
 
@@ -95,6 +96,10 @@ const Trainer = () => {
       {/* <div className={classes.ansWrapper}>the ans is: {isAnsShow && ans}</div> */}
 
       {/* <div className={classes.ansWrapper}>the ans is: {isAnsShow && ans}</div> */}
+      {/* <Switch inputProps={{ 'aria-label': 'primary checkbox' }} /> */}
+      {/* <Switch/> */}
+
+
       <Setting setSelectedList={setSelectedList} selectedList={selectedList}></Setting>
     </div>
   )
