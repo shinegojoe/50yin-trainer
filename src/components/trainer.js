@@ -10,6 +10,8 @@ import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 import PlayCircleFilledWhiteIcon from '@material-ui/icons/PlayCircleFilledWhite';
 import Switch from '@material-ui/core/Switch';
+import HandWrite from "Components/handWrite";
+
 
 
 
@@ -93,13 +95,9 @@ const Trainer = () => {
         {/* <Button onClick={soundClick}>sound</Button> */}
       </div>
       <div className={classes.ansWrapper}>the ans is: {ans}</div>
-      {/* <div className={classes.ansWrapper}>the ans is: {isAnsShow && ans}</div> */}
+     
 
-      {/* <div className={classes.ansWrapper}>the ans is: {isAnsShow && ans}</div> */}
-      {/* <Switch inputProps={{ 'aria-label': 'primary checkbox' }} /> */}
-      {/* <Switch/> */}
-
-
+      <HandWrite></HandWrite>
       <Setting setSelectedList={setSelectedList} selectedList={selectedList}></Setting>
     </div>
   )

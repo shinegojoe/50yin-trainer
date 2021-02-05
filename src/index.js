@@ -7,12 +7,18 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import purple from '@material-ui/core/colors/purple';
 import green from '@material-ui/core/colors/green';
 import { ThemeProvider } from '@material-ui/core/styles';
+import { createStore, applyMiddleware } from "redux"
+import rootReducer from "Src/reducers/rootReducer.js";
+import { Provider } from "react-redux";
+
+
+const store = createStore(rootReducer)
 
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: purple[500],
+      main: '#115A3F',
     },
     secondary: {
       main: green[500],
@@ -23,7 +29,9 @@ const theme = createMuiTheme({
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')

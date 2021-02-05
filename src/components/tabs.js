@@ -6,6 +6,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import classes from "Sass/appBarLayout.module.sass";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -42,8 +43,12 @@ function a11yProps(index) {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
+    // flexGrow: 1,
+    // backgroundColor: theme.palette.background.paper,
+  },
+  appBar: {
+    top: 'auto',
+    bottom: 0,
   },
 }));
 
@@ -58,7 +63,7 @@ export default function SimpleTabs(props) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="fixed" className={classes.appBar}>
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
           <Tab label="50 trainer" {...a11yProps(0)} />
           <Tab label="lyrics" {...a11yProps(1)} />
