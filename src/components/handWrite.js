@@ -86,16 +86,35 @@ const HandWrite = () => {
     setIsDrawing(false)
   }
 
-  const touchStart = () => {
+  const mLeave = () => {
+    setIsDrawing(false)
+  }
+
+  const touchStart = (e) => {
+    setIsDrawing(true)
+    const newX = e.clientX - canvasEle.current.offsetLeft
+    const newY = e.clientY - canvasEle.current.offsetTop
+    setX(newX)
+    setY(newY)
 
   }
 
-  const touchMove = () => {
-
+  const touchMove = (e) => {
+    if(isDrawing) {
+      const newX = e.clientX - canvasEle.current.offsetLeft
+      const newY = e.clientY - canvasEle.current.offsetTop
+      // console.log('new', newX, newY)
+      ctx.beginPath()
+      ctx.moveTo( x, y)
+      ctx.lineTo( newX, newY)
+      ctx.stroke()
+      setX(newX)
+      setY(newY)
+    }
   }
 
   const touchEnd = () => {
-
+    setIsDrawing(false)
   }
 
   const test = useCallback(()=> {
@@ -108,6 +127,10 @@ const HandWrite = () => {
       <canvas 
         ref={canvasEle}
         className={classes.canvasWrapper} 
+        onTouchStart={touchStart}
+        onTouchMove={touchMove}
+        onTouchEnd={touchEnd}
+        onMouseLeave={mLeave}
         onMouseMove={mMove}
         onMouseUp={mUp}
         onMouseDown={mDown} >

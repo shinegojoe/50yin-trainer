@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Button from '@material-ui/core/Button';
 import wordMap from "Src/wordMap";
 import classes from "Sass/mainLayout.module.sass"
@@ -23,6 +23,9 @@ const Trainer = () => {
   const [ selectedList, setSelectedList ] = useState([])
   const [ isAnsShow, setIsAnsShow ] = useState(true)
   const [target, setTarget ] = useState({})
+  const [isSettingOn, setIsSettingOn] = useState(true)
+  const [isBoardOn, setIsBoardOn] = useState(true)
+  const drawerRef = useRef(null)
 
 
   // useEffect(()=> {
@@ -59,6 +62,7 @@ const Trainer = () => {
     setWord(data.pen)
     setAns('???')
     setTarget(data)
+    // drawerRef.current.clearClick()
     // setIsAnsShow(false)
   }
 
@@ -72,6 +76,14 @@ const Trainer = () => {
     // audioElement.current.play()
     const sound = new Audio(`learn50/${target.roi}.mp3`)
     sound.play()
+  }
+
+  const handleSetting = () => {
+    setIsSettingOn(!isSettingOn)
+  }
+
+  const hanldeBoard = () => {
+    setIsBoardOn(!isBoardOn)
   }
 
   return (
@@ -95,10 +107,13 @@ const Trainer = () => {
         {/* <Button onClick={soundClick}>sound</Button> */}
       </div>
       <div className={classes.ansWrapper}>the ans is: {ans}</div>
+      <Switch onChange={handleSetting} inputProps={{ 'aria-label': 'primary checkbox' }} />setting
+      <Switch onChange={hanldeBoard} inputProps={{ 'aria-label': 'primary checkbox' }} />write board
+
      
 
-      <HandWrite></HandWrite>
-      <Setting setSelectedList={setSelectedList} selectedList={selectedList}></Setting>
+      {isBoardOn && <HandWrite></HandWrite>}
+      {isSettingOn && <Setting setSelectedList={setSelectedList} selectedList={selectedList}></Setting> }
     </div>
   )
 }
