@@ -112,7 +112,7 @@ const Trainer = () => {
 
      
 
-      {isBoardOn && <HandWrite></HandWrite>}
+      {/* {isBoardOn && <HandWrite></HandWrite>} */}
       {isSettingOn && <Setting setSelectedList={setSelectedList} selectedList={selectedList}></Setting> }
     </div>
   )

@@ -1,23 +1,24 @@
-import Main from 'Components/main'
-import Tabs from "Components/tabs"
-import classes from "Sass/mainLayout.module.sass"
-import Trainer from 'Components/trainer'
-import Lyric from 'Components/lyric'
-import HandWrite from "Components/handWrite";
+// import Main from 'Components/main'
+// import Tabs from "Components/tabs"
+// import classes from "Sass/mainLayout.module.sass"
+// import Trainer from 'Components/trainer'
+import Trainer from "Src/reducerVersion/trainer/trainer";
+// import Lyric from 'Components/lyric'
+// import HandWrite from "Components/handWrite";
 
 import React, { useState } from "react";
 
 function App() {
-  const [ tabIndex, setTabIndex ] = useState(0)
+  // const [ tabIndex, setTabIndex ] = useState(0)
   
 
-  const tabUpdate = (val) => {
-    setTabIndex(val)
-  }
+  // const tabUpdate = (val) => {
+  //   setTabIndex(val)
+  // }
 
-  const handleSetting = () => {
+  // const handleSetting = () => {
 
-  }
+  // }
 
   
 
