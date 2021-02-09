@@ -46,7 +46,7 @@ fnMap.set(trainerString.playSound, playSound)
 
 
 const TrainerReducer = (state = initState, action) => {
-  console.log('action', action)
+  // console.log('action', action)
   const fn = fnMap.get(action.type)
   if(fn) {
     return fn(state, action)

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import classes from "Sass/mainLayout.module.sass"
 import Logo from 'Src/images/character.png'
@@ -6,13 +6,18 @@ import IconButton from '@material-ui/core/IconButton';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 import PlayCircleFilledWhiteIcon from '@material-ui/icons/PlayCircleFilledWhite';
-import wordMap from "Src/wordMap";
+import CancelIcon from '@material-ui/icons/Cancel';
 import Setting from "Src/reducerVersion/trainer/setting";
 import { trainerString } from 'Src/actionString'
-import { StarRateTwoTone } from '@material-ui/icons';
+import Switch from '@material-ui/core/Switch';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Dialog from '@material-ui/core/Dialog';
+import "Sass/settingDialog.sass";
 
 
 const Trainer = () => {
+
+  const [ isDialogOn, setIsDialogOn] = useState(true)
 
   const dispatch = useDispatch()
 
@@ -50,8 +55,11 @@ const Trainer = () => {
     dispatch(action)
   }
 
+  const handleDialog = (bool) => {
+    setIsDialogOn(bool)
+  }
 
-
+  
   return (
     <div className={classes.trainerLayout}>
       <div className={classes.titleText}>50音訓練君</div>      
@@ -73,9 +81,24 @@ const Trainer = () => {
         {/* <Button onClick={soundClick}>sound</Button> */}
       </div>
       <div className={classes.ansWrapper}>the ans is: {ans}</div>
+      {/* <Switch>setting</Switch> */}
+      <FormControlLabel
+          value="end"
+          control={<Switch onChange={()=> {handleDialog(true)}} checked={isDialogOn} color="primary" />}
+          label="setting"
+          labelPlacement="end"
+      />
 
       {/* {isBoardOn && <HandWrite></HandWrite>} */}
-      <Setting></Setting>
+      <Dialog open={isDialogOn} aria-labelledby="simple-dialog-title">
+        <div className={classes.dialogLayout}>
+          <IconButton onClick={()=> {handleDialog(false)}}>
+            <CancelIcon className={classes.iconWrapper}/>
+          </IconButton>
+          <Setting></Setting>
+        </div>
+        
+      </Dialog>
     </div>
   )
 }
